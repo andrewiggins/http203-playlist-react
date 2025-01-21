@@ -1,5 +1,6 @@
 {
   "name": "http203-playlist-react",
+  "type": "module",
   "version": "1.0.0",
   "description": "Rebuild of the http203-playlist app using React ViewTransition component",
   "main": "src/index.tsx",
