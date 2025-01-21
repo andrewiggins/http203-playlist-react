@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "react";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, startTransition } from "react";
 import Index from "shared/Index/index.tsx";
 import { cohosts } from "shared/data";
 import Video from "shared/Video/index.tsx";
@@ -36,8 +36,10 @@ const App: FunctionComponent<Props> = ({ videos }) => {
 
 	const setStateFromURL = useCallback(
 		(path = homePath()) => {
-			setVideo(getVideoFromURL(path));
-			setCohost(getCohostFromURL(path));
+			startTransition(() => {
+				setVideo(getVideoFromURL(path));
+				setCohost(getCohostFromURL(path));
+			});
 		},
 		[getVideoFromURL],
 	);
