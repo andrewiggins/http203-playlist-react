@@ -1,0 +1,50 @@
+{
+  "name": "http203-playlist-react",
+  "version": "1.0.0",
+  "description": "Rebuild of the http203-playlist app using React ViewTransition component",
+  "main": "src/index.tsx",
+  "scripts": {
+    "build": "vite build",
+    "serve": "vite preview",
+    "start": "vite",
+    "lint": "npm run tsc && npm run check-format",
+    "tsc": "tsc -p tsconfig.json",
+    "check-format": "prettier --no-error-on-unmatched-pattern --check **/*.{js,jsx,ts,tsx,css,md,html,yml,yaml,json}",
+    "format": "prettier --no-error-on-unmatched-pattern --write **/*.{js,jsx,ts,tsx,css,md,html,yml,yaml,json}",
+    "prepare": "husky",
+    "nano-staged": "nano-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewiggins/http203-playlist-react.git"
+  },
+  "author": "Andre Wiggins",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/andrewiggins/http203-playlist-react/issues"
+  },
+  "homepage": "https://github.com/andrewiggins/http203-playlist-react#readme",
+  "dependencies": {
+    "react": "^0.0.0-experimental-18eaf51b-20250118",
+    "react-dom": "^0.0.0-experimental-18eaf51b-20250118"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "husky": "^9.1.7",
+    "nano-staged": "^0.8.0",
+    "patch-package": "^8.0.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
+  },
+  "nano-staged": {
+    "**/*.{js,jsx,ts,tsx,css,md,html,yml,yaml,json}": [
+      "prettier --write"
+    ]
+  },
+  "volta": {
+    "node": "22.13.1"
+  }
+}
