@@ -3,6 +3,7 @@ import type { FunctionComponent } from "react";
 import styles from "./styles.module.css";
 // import "add-css:./styles.module.css";
 import { formatDate, ytSrcset } from "shared/utils";
+import { videoPath } from "../../routes";
 
 interface Props {
 	videos: PageData;
@@ -13,7 +14,7 @@ const VideoList: FunctionComponent<Props> = ({ videos }: Props) => {
 		<ol className={styles.videoList}>
 			{Object.entries(videos).map(([slug, video]) => (
 				<li key={slug}>
-					<a className={styles.videoLink} href={`/videos/${slug}/`}>
+					<a className={styles.videoLink} href={videoPath(slug)}>
 						<img
 							className={[styles.videoThumb, "video-thumb"].join(" ")}
 							srcSet={ytSrcset(video.id)}

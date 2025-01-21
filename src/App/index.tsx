@@ -4,13 +4,14 @@ import Index from "shared/Index/index.tsx";
 import { cohosts } from "shared/data";
 import Video from "shared/Video/index.tsx";
 import { useRouter } from "./router";
+import { homePath, isCohostPath, isVideoPath } from "shared/routes";
 
 interface Props {
 	videos: PageData;
 }
 
 function getCohostFromURL(path = location.pathname) {
-	if (!path.startsWith("/with-")) return undefined;
+	if (!isCohostPath(path)) return undefined;
 	const cohost = /\/with-([^/]+)/.exec(path);
 	if (!cohost) return undefined;
 	return cohosts.find((name) => name.toLowerCase() === cohost[1]);
@@ -22,8 +23,9 @@ const App: FunctionComponent<Props> = ({ videos }) => {
 			const videoPrefix = "/videos/";
 			let video: undefined | (typeof videos)[string];
 
-			if (path.startsWith(videoPrefix)) {
-				const slug = path.slice(videoPrefix.length, -1);
+			if (isVideoPath(path)) {
+				const startIndex = path.indexOf(videoPrefix) + videoPrefix.length;
+				const slug = path.slice(startIndex, -1);
 				video = videos[slug];
 			}
 
@@ -33,7 +35,7 @@ const App: FunctionComponent<Props> = ({ videos }) => {
 	);
 
 	const setStateFromURL = useCallback(
-		(path = "/") => {
+		(path = homePath()) => {
 			setVideo(getVideoFromURL(path));
 			setCohost(getCohostFromURL(path));
 		},

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { usePageTransition } from "shared/utils.ts";
 import videoListStyles from "shared/general/VideoList/styles.module.css";
 import embedStyles from "shared/Video/Embed/styles.module.css";
+import { isCohostPath, isHomePath, isVideoPath } from "shared/routes";
 
 const enum PageType {
 	Thumbs,
@@ -44,8 +45,8 @@ interface TransitionData {
 }
 
 function getPageType(url: string): PageType {
-	if (url === "/" || url.startsWith("/with-")) return PageType.Thumbs;
-	if (url.startsWith("/videos/")) return PageType.Video;
+	if (isHomePath(url) || isCohostPath(url)) return PageType.Thumbs;
+	if (isVideoPath(url)) return PageType.Video;
 	return PageType.Unknown;
 }
 
@@ -229,11 +230,7 @@ export function useRouter(callback: (newURL: string) => void) {
 				// Need to call this before intercept, else the current entry is wrong.
 				const navigationType = getNavigationType(event);
 
-				if (
-					destinationURL.pathname === "/" ||
-					destinationURL.pathname.startsWith("/with-") ||
-					destinationURL.pathname.startsWith("/videos/")
-				) {
+				if (getPageType(destinationURL.pathname) !== PageType.Unknown) {
 					event.intercept({
 						scroll: "manual",
 						async handler() {
