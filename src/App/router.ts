@@ -234,10 +234,11 @@ export function useRouter(callback: (newURL: string) => void) {
 					event.intercept({
 						scroll: "manual",
 						async handler() {
-							await performTransition(currentPath, destinationURL.pathname, {
-								type: navigationType,
-							});
-							await globalThis.ongoingTransition!.updateCallbackDone;
+							// await performTransition(currentPath, destinationURL.pathname, {
+							// 	type: navigationType,
+							// });
+							// await globalThis.ongoingTransition!.updateCallbackDone;
+							savedCallback.current(destinationURL.pathname);
 
 							event.scroll();
 

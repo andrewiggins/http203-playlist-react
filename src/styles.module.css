@@ -17,6 +17,8 @@ html {
 	color: var(--primary-text);
 	line-height: 1.5;
 	height: -webkit-fill-available;
+
+	overflow-y: scroll;
 }
 
 body {
