@@ -27,10 +27,6 @@ export default defineConfig({
 	resolve: {
 		alias: [
 			{
-				find: "video-data",
-				replacement: p("./src/data.json"),
-			},
-			{
 				find: /^shared\//,
 				replacement: p("./src/shared/"),
 			},

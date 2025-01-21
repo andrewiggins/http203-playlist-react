@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 // import "add-css:./styles.module.css";
 
 interface Props {
-	video: (typeof import("video-data").default)[string];
+	video: PageData[string];
 }
 
 const Embed: FunctionComponent<Props> = ({ video }) => {
@@ -48,7 +48,7 @@ const Embed: FunctionComponent<Props> = ({ video }) => {
 				alt={video.title}
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				fetchpriority="high"
+				fetchPriority="high"
 			/>
 		</div>
 	);

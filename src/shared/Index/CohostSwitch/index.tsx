@@ -16,7 +16,10 @@ const CohostSwitch: FunctionComponent<Props> = ({ selectedCohost }) => {
 					<a href="/">All</a>
 				</li>
 				{cohosts.map((cohost) => (
-					<li className={selectedCohost === cohost ? styles.currentCohost : ""}>
+					<li
+						key={cohost}
+						className={selectedCohost === cohost ? styles.currentCohost : ""}
+					>
 						<a href={`/with-${cohost.toLowerCase()}/`}>{cohost}</a>
 					</li>
 				))}

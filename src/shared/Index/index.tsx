@@ -7,8 +7,8 @@ import CohostSwitch from "./CohostSwitch/index.tsx";
 //import * as styles from './styles.module.css';
 
 interface Props {
-	videos: typeof import("video-data").default;
-	cohost?: (typeof import("video-data").default)[string]["cohost"];
+	videos: PageData;
+	cohost?: PageData[string]["cohost"];
 }
 
 const Index: FunctionComponent<Props> = ({ videos, cohost }) => {

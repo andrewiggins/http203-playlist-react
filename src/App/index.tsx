@@ -6,7 +6,7 @@ import Video from "shared/Video/index.tsx";
 import { useRouter } from "./router";
 
 interface Props {
-	videos: typeof import("video-data").default;
+	videos: PageData;
 }
 
 function getCohostFromURL(path = location.pathname) {
@@ -45,9 +45,9 @@ const App: FunctionComponent<Props> = ({ videos }) => {
 	const initialVideo = useMemo(() => getVideoFromURL(), [getVideoFromURL]);
 	const initialCohost = useMemo(() => getCohostFromURL(), []);
 
-	const [video, setVideo] = useState<
-		undefined | (typeof import("video-data").default)[string]
-	>(initialVideo);
+	const [video, setVideo] = useState<undefined | PageData[string]>(
+		initialVideo,
+	);
 
 	const [cohost, setCohost] = useState<
 		undefined | (typeof import("shared/data").cohosts)[number]

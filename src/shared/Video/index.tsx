@@ -9,8 +9,8 @@ import styles from "./styles.module.css";
 import Embed from "./Embed";
 
 interface Props {
-	videos: typeof import("video-data").default;
-	video: (typeof import("video-data").default)[string];
+	videos: PageData;
+	video: PageData[string];
 }
 
 const Video: FunctionComponent<Props> = ({ video, videos }) => {

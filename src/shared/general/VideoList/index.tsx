@@ -5,14 +5,14 @@ import styles from "./styles.module.css";
 import { formatDate, ytSrcset } from "shared/utils";
 
 interface Props {
-	videos: typeof import("video-data").default;
+	videos: PageData;
 }
 
 const VideoList: FunctionComponent<Props> = ({ videos }: Props) => {
 	return (
 		<ol className={styles.videoList}>
 			{Object.entries(videos).map(([slug, video]) => (
-				<li>
+				<li key={slug}>
 					<a className={styles.videoLink} href={`/videos/${slug}/`}>
 						<img
 							className={[styles.videoThumb, "video-thumb"].join(" ")}
